@@ -33,7 +33,7 @@ Design erstellt mit Figma
 
 ## 📷 Vorschau
 
-![Portfolio Screenshot](./src/assets/screenshots/portfolio-home.png)
+![Portfolio Screenshot](./public/04_projects/portfolio.png)
 
 ---
 
