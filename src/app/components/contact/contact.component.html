@@ -1,0 +1,103 @@
+<section id="contact" class="contact">
+  <div class="container">
+    <div class="contact-content" #contactContent>
+      <!-- Left Side - Text -->
+      <div class="contact-text">
+        <h2 class="section-title">{{ languageService.t('contact.title') }}</h2>
+        <h3 class="contact-subtitle">{{ languageService.t('contact.subtitle') }}</h3>
+        <p class="contact-problem">{{ languageService.t('contact.problem') }}</p>
+        <p class="contact-description">{{ languageService.t('contact.description') }}</p>
+      </div>
+
+      <!-- Right Side - Form -->
+      <div class="contact-form-container">
+        <form class="contact-form" [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+          <!-- Name Field -->
+          <div class="form-group">
+            <label for="name" class="form-label">{{ languageService.t('contact.nameLabel') }}</label>
+            <input 
+              type="text" 
+              id="name" 
+              formControlName="name"
+              [placeholder]="languageService.t('contact.namePlaceholder')"
+              class="form-input"
+              [class.error]="isFieldInvalid('name')"
+            >
+            <div class="error-message" *ngIf="isFieldInvalid('name')">
+              Name is required and must be at least 2 characters long
+            </div>
+          </div>
+
+          <!-- Email Field -->
+          <div class="form-group">
+            <label for="email" class="form-label">{{ languageService.t('contact.emailLabel') }}</label>
+            <input 
+              type="email" 
+              id="email" 
+              formControlName="email"
+              [placeholder]="languageService.t('contact.emailPlaceholder')"
+              class="form-input"
+              [class.error]="isFieldInvalid('email')"
+            >
+            <div class="error-message" *ngIf="isFieldInvalid('email')">
+              Please enter a valid email address
+            </div>
+          </div>
+
+          <!-- Message Field -->
+          <div class="form-group">
+            <label for="message" class="form-label">{{ languageService.t('contact.messageLabel') }}</label>
+            <textarea 
+              id="message" 
+              formControlName="message"
+              [placeholder]="languageService.t('contact.messagePlaceholder')"
+              class="form-textarea"
+              rows="5"
+              [class.error]="isFieldInvalid('message')"
+            ></textarea>
+            <div class="error-message" *ngIf="isFieldInvalid('message')">
+              Message is required and must be at least 10 characters long
+            </div>
+          </div>
+
+          <!-- Privacy Checkbox -->
+          <div class="form-group checkbox-group">
+            <label class="checkbox-label">
+              <input 
+                type="checkbox" 
+                formControlName="privacy"
+                class="checkbox-input"
+              >
+              <span class="checkbox-custom"></span>
+              <span class="checkbox-text">{{ languageService.t('contact.privacy') }}</span>
+            </label>
+            <div class="error-message" *ngIf="isFieldInvalid('privacy')">
+              You must accept the privacy policy
+            </div>
+          </div>
+
+          <!-- Enhanced Submit Button -->
+          <button 
+            type="submit" 
+            class="submit-button"
+            [disabled]="!contactForm.valid"
+            [class.sending]="isSubmitting"
+          >
+            <span *ngIf="!isSubmitting">{{ languageService.t('contact.send') }}</span>
+            <span *ngIf="isSubmitting">Sending...</span>
+          </button>
+
+          <!-- Success Message -->
+          <div class="success-message" *ngIf="showSuccessMessage">
+            <p>✅ Message sent successfully! I'll get back to you soon.</p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Enhanced To-Top Button -->
+  <button class="to-top-btn" (click)="scrollToTop()" [class.visible]="showScrollButton">
+    <span>↑</span>
+  </button>
+</section>

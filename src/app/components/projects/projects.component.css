@@ -1,0 +1,444 @@
+/* Enhanced projects.component.css with dynamic animations */
+
+.projects {
+  padding: 10px 0;
+  background: var(--primary-color);
+  position: relative;
+  overflow: hidden;
+}
+
+.projects-header {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--white);
+  position: relative;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 4px;
+  background: var(--accent-color);
+  border-radius: 2px;
+}
+
+.projects-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 80px; /* Mehr Abstand für bessere Scroll-Animation */
+}
+
+/* PROJECT CARD SCROLL ANIMATIONS */
+.project-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+  background: var(--primary-color);
+  border: solid 4px var(--accent-color);
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  transition: all 0.6s cubic-bezier(0.4, 0.0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  
+  /* Initial state - für Animation */
+  opacity: 0;
+  transform: translateY(80px) scale(0.95);
+}
+
+/* Animation when scrolled into view */
+.project-card.animate-in {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* Enhanced hover effects */
+.project-card.animate-in:hover {
+  transform: translateY(-15px) scale(1.02);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.2);
+  border-color: var(--accent-color);
+}
+
+/* Existing shine effect - enhanced */
+.project-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+  transition: left 0.8s ease;
+  z-index: 1;
+}
+
+.project-card:hover::before {
+  left: 100%;
+}
+
+/* ALTERNATING LAYOUT */
+.project-card.reverse {
+  grid-template-columns: 1fr 1fr;
+}
+
+.project-card.reverse .project-content {
+  order: 2;
+}
+
+.project-card.reverse .project-image {
+  order: 1;
+}
+
+/* Different entry animations for alternating cards */
+.project-card:nth-child(even):not(.animate-in) {
+  transform: translateX(-80px) translateY(40px) scale(0.95);
+}
+
+.project-card:nth-child(odd):not(.animate-in) {
+  transform: translateX(80px) translateY(40px) scale(0.95);
+}
+
+.project-card:nth-child(even).animate-in,
+.project-card:nth-child(odd).animate-in {
+  transform: translateX(0) translateY(0) scale(1);
+}
+
+/* PROJECT IMAGE ENHANCEMENTS */
+.project-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 350px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.05);
+  transform: translateY(30px);
+  opacity: 0;
+  transition: all 0.8s cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+.project-image.image-animate {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.project-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 15px;
+  transition: transform 0.5s cubic-bezier(0.4, 0.0, 0.2, 1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.project-image:hover img {
+  transform: scale(1.08);
+}
+
+/* PROJECT OVERLAY - Neu hinzugefügt */
+.project-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(255, 170, 0, 0.9), rgba(102, 126, 234, 0.8));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: all 0.4s cubic-bezier(0.4, 0.0, 0.2, 1);
+  border-radius: 15px;
+  z-index: 2;
+}
+
+.project-image:hover .project-overlay {
+  opacity: 1;
+}
+
+.overlay-content {
+  text-align: center;
+  color: white;
+  transform: translateY(20px);
+  transition: transform 0.4s cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+.project-image:hover .overlay-content {
+  transform: translateY(0);
+}
+
+.overlay-content h4 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.overlay-content p {
+  font-size: 1rem;
+  opacity: 0.9;
+}
+
+/* PROJECT CONTENT ANIMATIONS */
+.project-content {
+  padding: 20px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  transform: translateY(30px);
+  opacity: 0;
+  transition: all 0.8s cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+.project-content.content-animate {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.project-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--accent-color);
+  margin-bottom: 15px;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.project-card:hover .project-title {
+  color: var(--white);
+  text-shadow: 0 0 20px var(--accent-color);
+}
+
+/* TECH TAGS - Enhanced */
+.project-tech {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.tech-tag {
+  background: var(--accent-color);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.tech-tag::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0.1));
+  transition: left 0.5s ease;
+}
+
+.project-card:hover .tech-tag::before {
+  left: 100%;
+}
+
+.project-card:hover .tech-tag {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(255, 170, 0, 0.3);
+}
+
+.project-description {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--white);
+  margin-bottom: 25px;
+  text-align: justify;
+  transition: color 0.3s ease;
+}
+
+/* ENHANCED PROJECT LINKS */
+.project-links {
+  display: flex;
+  gap: 20px;
+}
+
+.project-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 28px;
+  background: transparent;
+  color: var(--accent-color);
+  text-decoration: none;
+  border: 2px solid var(--accent-color);
+  border-radius: 30px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.4s cubic-bezier(0.4, 0.0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.project-link::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: var(--accent-color);
+  transition: left 0.4s cubic-bezier(0.4, 0.0, 0.2, 1);
+  z-index: -1;
+}
+
+.project-link:hover::before {
+  left: 0;
+}
+
+.project-link:hover {
+  color: white;
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(255, 170, 0, 0.4);
+}
+
+.project-link.primary {
+  background: var(--accent-color);
+  color: white;
+}
+
+.project-link.primary::before {
+  background: var(--white);
+}
+
+.project-link.primary:hover {
+  color: var(--primary-color);
+  box-shadow: 0 15px 35px rgba(255, 255, 255, 0.3);
+}
+
+/* Icon animation in links */
+.project-link svg {
+  transition: transform 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+.project-link:hover svg {
+  transform: translateX(3px) translateY(-3px);
+}
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 768px) {
+  .projects {
+    padding: 80px 0;
+  }
+  
+  .projects-grid {
+    gap: 60px;
+  }
+  
+  .project-card {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    padding: 30px 20px;
+  }
+  
+  .project-card.reverse .project-content,
+  .project-card.reverse .project-image {
+    order: unset;
+  }
+  
+  /* Reset transform für mobile */
+  .project-card:nth-child(even):not(.animate-in),
+  .project-card:nth-child(odd):not(.animate-in) {
+    transform: translateY(50px) scale(0.95);
+  }
+  
+  .section-title {
+    font-size: 2rem;
+  }
+  
+  .project-title {
+    font-size: 1.5rem;
+  }
+  
+  .project-image {
+    height: 250px;
+  }
+  
+  .project-links {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .projects {
+    padding: 60px 0;
+  }
+  
+  .projects-grid {
+    gap: 40px;
+  }
+  
+  .project-card {
+    padding: 20px 15px;
+  }
+  
+  .project-image {
+    height: 200px;
+  }
+  
+  .project-links {
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .project-link {
+    text-align: center;
+    justify-content: center;
+  }
+  
+  .overlay-content h4 {
+    font-size: 1.2rem;
+  }
+  
+  .overlay-content p {
+    font-size: 0.9rem;
+  }
+}
+
+/* PERFORMANCE OPTIMIZATIONS */
+@media (prefers-reduced-motion: reduce) {
+  .project-card,
+  .project-image,
+  .project-content,
+  .tech-tag,
+  .project-link {
+    transition: none;
+  }
+  
+  .project-card::before,
+  .project-link::before,
+  .tech-tag::before,
+  .project-overlay {
+    transition: none;
+  }
+}

@@ -1,0 +1,404 @@
+.skills {
+  padding: 40px 0;
+  background: var(--primary-color);
+  position: relative;
+}
+
+.skills-content {
+  text-align: center;
+}
+
+.skills-header {
+  margin-bottom: 60px;
+  /* Initial state - unsichtbar */
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+/* Animation when scrolled into view */
+.skills-header.animate-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.section-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 30px;
+  position: relative;
+  /* Initial state für Titel */
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+.section-title.animate-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 4px;
+  background: var(--accent-color);
+  border-radius: 2px;
+  /* Underline animation */
+  opacity: 0;
+  transform: translateX(-50%) scaleX(0);
+  transition: all 0.8s cubic-bezier(0.4, 0.0, 0.2, 1) 0.3s;
+}
+
+.section-title.animate-in::after {
+  opacity: 1;
+  transform: translateX(-50%) scaleX(1);
+}
+
+.skills-description {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: var(--white);
+  max-width: 800px;
+  margin: 0 auto;
+  /* Initial state für Beschreibung */
+  opacity: 0;
+  transform: translateY(25px);
+  transition: all 0.7s cubic-bezier(0.4, 0.0, 0.2, 1) 0.2s;
+}
+
+.skills-description.animate-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 40px;
+  max-width: 800px;
+  margin: 0 auto;
+  /* Initial state für das gesamte Grid */
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s cubic-bezier(0.4, 0.0, 0.2, 1) 0.4s;
+}
+
+.skills-grid.animate-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* SCROLL ANIMATION STYLES */
+.skill-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  transition: transform 0.3s ease;
+  
+  /* Initial state - unsichtbar */
+  opacity: 0;
+  transform: translateY(50px) scale(0.8);
+  transition: all 0.6s cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+/* Animation when scrolled into view */
+.skill-item.animate-in {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* Hover effect bleibt bestehen */
+.skill-item:hover {
+  transform: translateY(-10px) scale(1.05);
+}
+
+/* Wenn animiert, dann besserer Hover-Effekt */
+.skill-item.animate-in:hover {
+  transform: translateY(-15px) scale(1.08);
+}
+
+.skill-icon {
+  width: 80px;
+  height: 80px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.4, 0.0, 0.2, 1);
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  
+  /* Subtle pulse animation on entry */
+  animation: none;
+}
+
+.skill-item.animate-in .skill-icon {
+  animation: skillPulse 0.6s ease-out 0.3s;
+}
+
+@keyframes skillPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 170, 0, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 20px rgba(255, 170, 0, 0.1);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 170, 0, 0);
+  }
+}
+
+.skill-icon:hover {
+  transform: scale(1.15);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Skill-Images */
+.skill-image {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+  transition: all 0.4s cubic-bezier(0.4, 0.0, 0.2, 1);
+  filter: brightness(1.1);
+}
+
+.skill-icon:hover .skill-image {
+  transform: scale(1.1);
+  filter: brightness(1.3) drop-shadow(0 0 15px rgba(255, 170, 0, 0.6));
+}
+
+/* Enhanced Glanz-Effekt */
+.skill-icon::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, transparent, rgba(255,255,255,0.4), transparent);
+  transform: rotate(45deg);
+  transition: all 0.6s ease;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.skill-icon:hover::before {
+  opacity: 1;
+  animation: shine 0.8s ease;
+}
+
+@keyframes shine {
+  0% {
+    transform: translateX(-100%) translateY(-100%) rotate(45deg);
+  }
+  100% {
+    transform: translateX(100%) translateY(100%) rotate(45deg);
+  }
+}
+
+/* Enhanced color effects for each skill */
+.skill-icon:hover .skill-image.html {
+  filter: brightness(1.4) drop-shadow(0 0 20px #e34f26);
+}
+
+.skill-icon:hover .skill-image.css {
+  filter: brightness(1.4) drop-shadow(0 0 20px #1572b6);
+}
+
+.skill-icon:hover .skill-image.js {
+  filter: brightness(1.4) drop-shadow(0 0 20px #f7df1e);
+}
+
+.skill-icon:hover .skill-image.angular {
+  filter: brightness(1.4) drop-shadow(0 0 20px #dd0031);
+}
+
+.skill-icon:hover .skill-image.ts {
+  filter: brightness(1.4) drop-shadow(0 0 20px #3178c6);
+}
+
+.skill-icon:hover .skill-image.git {
+  filter: brightness(1.4) drop-shadow(0 0 20px #f05032);
+}
+
+.skill-icon:hover .skill-image.figma {
+  filter: brightness(1.4) drop-shadow(0 0 20px #f24e1e);
+}
+
+.skill-icon:hover .skill-image.xd {
+  filter: brightness(1.4) drop-shadow(0 0 20px #ff61f6);
+}
+
+.skill-name {
+  font-weight: 600;
+  color: var(--white);
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+}
+
+/* Name animation on skill hover */
+.skill-item:hover .skill-name {
+  color: var(--accent-color);
+  transform: translateY(-2px);
+  text-shadow: 0 2px 8px rgba(255, 170, 0, 0.3);
+}
+
+/* Fallback für fehlende Bilder */
+.skill-image:not([src]),
+.skill-image[src=""] {
+  display: none;
+}
+
+.skill-image:not([src]) + .skill-name::before,
+.skill-image[src=""] + .skill-name::before {
+  content: "Icon fehlt";
+  display: block;
+  font-size: 0.8rem;
+  color: var(--accent-color);
+  margin-bottom: 5px;
+}
+
+/* Staggered delay für verschiedene Reihen */
+.skill-item:nth-child(1) { transition-delay: 0ms; }
+.skill-item:nth-child(2) { transition-delay: 150ms; }
+.skill-item:nth-child(3) { transition-delay: 300ms; }
+.skill-item:nth-child(4) { transition-delay: 450ms; }
+.skill-item:nth-child(5) { transition-delay: 600ms; }
+.skill-item:nth-child(6) { transition-delay: 750ms; }
+.skill-item:nth-child(7) { transition-delay: 900ms; }
+.skill-item:nth-child(8) { transition-delay: 1050ms; }
+
+/* Sanfte Fade-In Animation für den gesamten Bereich */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Alternative smooth fade animation */
+@keyframes smoothFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .skills {
+    padding: 80px 0;
+  }
+  
+  .section-title {
+    font-size: 2rem;
+  }
+  
+  .skills-description {
+    font-size: 1rem;
+  }
+  
+  .skills-grid {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 30px;
+  }
+  
+  .skill-icon {
+    width: 70px;
+    height: 70px;
+  }
+  
+  .skill-image {
+    width: 40px;
+    height: 40px;
+  }
+  
+  /* Reduzierte Animation-Delays auf Mobile */
+  .skill-item:nth-child(n) { 
+    transition-delay: 0ms;
+  }
+  .skill-item:nth-child(2n) { 
+    transition-delay: 100ms;
+  }
+  .skill-item:nth-child(3n) { 
+    transition-delay: 200ms;
+  }
+  
+  /* Reduzierte Transform-Werte für Mobile */
+  .skills-header {
+    transform: translateY(20px);
+  }
+  
+  .section-title {
+    transform: translateY(15px);
+  }
+  
+  .skills-description {
+    transform: translateY(15px);
+  }
+  
+  .skills-grid {
+    transform: translateY(25px);
+  }
+}
+
+@media (max-width: 480px) {
+  .skills {
+    padding: 60px 0;
+  }
+  
+  .skills-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  
+  .skill-icon {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .skill-image {
+    width: 35px;
+    height: 35px;
+  }
+  
+  .skill-item {
+    transform: translateY(30px) scale(0.9);
+  }
+  
+  .skill-item.animate-in {
+    transform: translateY(0) scale(1);
+  }
+  
+  /* Noch weniger Transform auf sehr kleinen Screens */
+  .skills-header {
+    transform: translateY(15px);
+  }
+  
+  .skills-grid {
+    transform: translateY(20px);
+  }
+}

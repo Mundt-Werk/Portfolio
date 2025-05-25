@@ -1,1 +1,266 @@
-/* You can add global styles to this file, and also import other style files */
+/* CSS Custom Properties (Root Colors) */
+:root {
+  /* Brand Colors */
+  --primary-color: #00235A;      /* Dunkles Blau */
+  --accent-color: #FFAA00;       /* Orange/Gold */
+  --white: #FFFFFF;
+  
+  /* Graustufen */
+  --light-gray: #F8F9FA;
+  --medium-gray: #6C757D;
+  --dark-gray: #333333;
+  
+  /* Gradients */
+  --primary-gradient: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
+  --accent-gradient: linear-gradient(135deg, var(--accent-color) 0%, var(--primary-color) 100%);
+  
+  /* Transparente Varianten */
+  --primary-light: rgba(0, 35, 90, 0.1);
+  --accent-light: rgba(255, 170, 0, 0.1);
+  
+  /* Schatten */
+  --shadow-light: 0 4px 20px rgba(0, 35, 90, 0.1);
+  --shadow-medium: 0 8px 30px rgba(0, 35, 90, 0.15);
+  --shadow-heavy: 0 12px 40px rgba(0, 35, 90, 0.2);
+  
+  /* Typography */
+  --font-primary: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  --font-headings: 'Poppins', 'Inter', sans-serif;
+  
+  /* Font Sizes */
+  --text-xs: 0.75rem;    /* 12px */
+  --text-sm: 0.875rem;   /* 14px */
+  --text-base: 1rem;     /* 16px */
+  --text-lg: 1.125rem;   /* 18px */
+  --text-xl: 1.25rem;    /* 20px */
+  --text-2xl: 1.5rem;    /* 24px */
+  --text-3xl: 1.875rem;  /* 30px */
+  --text-4xl: 2.25rem;   /* 36px */
+  --text-5xl: 3rem;      /* 48px */
+  
+  /* Spacing */
+  --space-xs: 0.25rem;   /* 4px */
+  --space-sm: 0.5rem;    /* 8px */
+  --space-md: 1rem;      /* 16px */
+  --space-lg: 1.5rem;    /* 24px */
+  --space-xl: 2rem;      /* 32px */
+  --space-2xl: 3rem;     /* 48px */
+  --space-3xl: 4rem;     /* 64px */
+  
+  /* Border Radius */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 50%;
+  
+  /* Transitions */
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.3s ease;
+  --transition-slow: 0.5s ease;
+}
+
+/* Font Imports */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap');
+
+/* Reset und Grundlagen */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-primary);
+  line-height: 1.6;
+  color: var(--dark-gray);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-headings);
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--white);
+}
+
+/* Container */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--space-lg);
+}
+
+/* Sections */
+
+
+/* Buttons */
+button {
+  font-family: var(--font-primary);
+  border: none;
+  cursor: pointer;
+  transition: var(--transition-normal);
+}
+
+/* ======================
+   CUSTOM SCROLLBAR STYLES
+   ====================== */
+
+/* Scrollbar für Webkit-Browser (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--primary-color);
+  border-radius: 10px;
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--accent-color), #FFD700);
+  border-radius: 10px;
+  border: 2px solid var(--primary-color);
+  box-shadow: 0 2px 10px rgba(255, 170, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #FFD700, var(--accent-color));
+  box-shadow: 0 4px 15px rgba(255, 170, 0, 0.5);
+  transform: scale(1.1);
+}
+
+::-webkit-scrollbar-thumb:active {
+  background: var(--accent-color);
+  box-shadow: 0 2px 5px rgba(255, 170, 0, 0.8);
+}
+
+::-webkit-scrollbar-corner {
+  background: var(--primary-color);
+}
+
+/* Für horizontale Scrollbars (falls benötigt) */
+::-webkit-scrollbar:horizontal {
+  height: 12px;
+}
+
+/* Firefox Scrollbar (ab Version 64) */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent-color) var(--primary-color);
+}
+
+/* Alternative: Minimalistischer Scrollbar */
+.minimal-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.minimal-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.minimal-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(255, 170, 0, 0.6);
+  border-radius: 4px;
+  border: none;
+}
+
+.minimal-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-color);
+}
+
+/* Dark Theme Scrollbar (falls du später Dark Mode hinzufügst) */
+.dark-theme::-webkit-scrollbar-track {
+  background: #1a1a1a;
+}
+
+.dark-theme::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--accent-color), #FFA500);
+  border: 2px solid #1a1a1a;
+}
+
+/* Smooth Scrolling für gesamte Seite */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom Scrollbar für spezielle Container */
+.custom-scroll-container {
+  overflow-y: auto;
+  max-height: 400px;
+}
+
+.custom-scroll-container::-webkit-scrollbar {
+  width: 10px;
+}
+
+.custom-scroll-container::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 5px;
+}
+
+.custom-scroll-container::-webkit-scrollbar-thumb {
+  background: var(--accent-color);
+  border-radius: 5px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Responsive Scrollbar */
+@media (max-width: 768px) {
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    border-radius: 6px;
+    border: 1px solid var(--primary-color);
+  }
+}
+
+@media (max-width: 480px) {
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    border: none;
+  }
+}
+
+/* Responsive */
+@media (max-width: 1440px) {
+  .container {
+    max-width: 1140px;
+  }
+}
+
+@media (max-width: 768px) {
+  section {
+    padding: var(--space-2xl) 0;
+  }
+  
+  .container {
+    padding: 0 var(--space-md);
+  }
+}
+
+@media (max-width: 480px) {
+  section {
+    padding: var(--space-xl) 0;
+  }
+  
+  .container {
+    padding: 0 var(--space-sm);
+  }
+}

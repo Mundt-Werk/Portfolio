@@ -1,0 +1,47 @@
+<header class="header">
+  <div class="container">
+    <!-- Logo/Name -->
+     <div class="logo">
+      <a (click)="scrollToSection('hero')" style="cursor: pointer;">
+        <img src="../../../assets/img/logo.png" alt="Marco Mundt Logo" class="logo-img"> Marco Mundt
+      </a>
+    </div>
+
+    <!-- Desktop Navigation -->
+    <nav class="nav-desktop">
+      <ul class="nav-list">
+        <li><a (click)="scrollToSection('about')" class="nav-link">{{ languageService.t('navigation.about') }}</a></li>
+        <li><a (click)="scrollToSection('skills')" class="nav-link">{{ languageService.t('navigation.skills') }}</a></li>
+        <li><a (click)="scrollToSection('projects')" class="nav-link">{{ languageService.t('navigation.projects') }}</a></li>
+        <li><a (click)="scrollToSection('contact')" class="nav-link">{{ languageService.t('navigation.contact') }}</a></li>
+      </ul>
+      <div class="language-switcher">
+        <button (click)="toggleLanguage()" class="lang-btn">
+          {{ currentLanguage === 'en' ? 'DE' : 'EN' }}
+        </button>
+      </div>
+    </nav>
+
+    <!-- Mobile Menu Button -->
+    <button class="mobile-menu-btn" (click)="toggleMobileMenu()">
+      <span [class.active]="isMobileMenuOpen"></span>
+      <span [class.active]="isMobileMenuOpen"></span>
+      <span [class.active]="isMobileMenuOpen"></span>
+    </button>
+
+    <!-- Mobile Navigation -->
+    <nav class="nav-mobile" [class.open]="isMobileMenuOpen">
+      <ul class="nav-list-mobile">
+        <li><a (click)="scrollToSection('about'); closeMobileMenu()" class="nav-link-mobile">{{ languageService.t('navigation.about') }}</a></li>
+        <li><a (click)="scrollToSection('skills'); closeMobileMenu()" class="nav-link-mobile">{{ languageService.t('navigation.skills') }}</a></li>
+        <li><a (click)="scrollToSection('projects'); closeMobileMenu()" class="nav-link-mobile">{{ languageService.t('navigation.projects') }}</a></li>
+        <li><a (click)="scrollToSection('contact'); closeMobileMenu()" class="nav-link-mobile">{{ languageService.t('navigation.contact') }}</a></li>
+        <li>
+          <button (click)="toggleLanguage()" class="lang-btn-mobile">
+            {{ currentLanguage === 'en' ? 'Deutsch' : 'English' }}
+          </button>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
