@@ -1,4 +1,4 @@
-.impressum-page {
+.datenschutz-page {
   min-height: 100vh;
   padding: 120px 0 60px;
   background: var(--primary-color);
@@ -7,7 +7,7 @@
 }
 
 /* Background Pattern */
-.impressum-page::before {
+.datenschutz-page::before {
   content: '';
   position: absolute;
   top: 0;
@@ -18,7 +18,7 @@
   z-index: 1;
 }
 
-.impressum-content {
+.datenschutz-content {
   max-width: 800px;
   margin: 0 auto;
   background: rgba(255, 255, 255, 0.1);
@@ -35,12 +35,12 @@
   transition: all 0.8s cubic-bezier(0.4, 0.0, 0.2, 1);
 }
 
-.impressum-content.animate-in {
+.datenschutz-content.animate-in {
   opacity: 1;
   transform: translateY(0);
 }
 
-.impressum-content h1 {
+.datenschutz-content h1 {
   color: var(--accent-color);
   margin-bottom: 40px;
   font-size: 2.8rem;
@@ -54,20 +54,20 @@
   transform: translateY(20px);
 }
 
-.impressum-content h1.animate-in {
+.datenschutz-content h1.animate-in {
   opacity: 1;
   transform: translateY(0);
 }
 
 /* Enhanced glow effect for main title */
-.impressum-content h1:hover {
+.datenschutz-content h1:hover {
   color: var(--white);
   text-shadow: 0 0 20px var(--accent-color), 0 0 40px rgba(255, 170, 0, 0.6), 0 0 60px rgba(255, 170, 0, 0.4);
   transform: translateY(-2px);
 }
 
 /* Underline for main title */
-.impressum-content h1::after {
+.datenschutz-content h1::after {
   content: '';
   position: absolute;
   bottom: -15px;
@@ -82,12 +82,12 @@
   transition: all 0.8s cubic-bezier(0.4, 0.0, 0.2, 1) 0.3s;
 }
 
-.impressum-content h1.animate-in::after {
+.datenschutz-content h1.animate-in::after {
   opacity: 1;
   transform: translateX(-50%) scaleX(1);
 }
 
-.impressum-content h2 {
+.datenschutz-content h2 {
   color: var(--accent-color);
   margin: 40px 0 20px;
   font-size: 1.4rem;
@@ -102,18 +102,67 @@
   transition: all 0.6s cubic-bezier(0.4, 0.0, 0.2, 1);
 }
 
-.impressum-content h2.animate-in {
+.datenschutz-content h2.animate-in {
   opacity: 1;
   transform: translateX(0);
 }
 
-.impressum-content h2:hover {
+.datenschutz-content h2:hover {
   color: var(--white);
   text-shadow: 0 0 15px var(--accent-color);
   transform: translateX(5px);
 }
 
-.impressum-content p {
+.datenschutz-content h3 {
+  color: var(--accent-color);
+  margin: 30px 0 15px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  cursor: default;
+  /* Initial state */
+  opacity: 0;
+  transform: translateX(-15px);
+  transition: all 0.6s cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+.datenschutz-content h3.animate-in {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.datenschutz-content h3:hover {
+  color: var(--white);
+  text-shadow: 0 0 10px var(--accent-color);
+  transform: translateX(3px);
+}
+
+.datenschutz-content h4 {
+  color: var(--accent-color);
+  margin: 25px 0 10px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  cursor: default;
+  /* Initial state */
+  opacity: 0;
+  transform: translateX(-10px);
+  transition: all 0.6s cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+.datenschutz-content h4.animate-in {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.datenschutz-content h4:hover {
+  color: var(--white);
+  text-shadow: 0 0 8px var(--accent-color);
+  transform: translateX(2px);
+}
+
+.datenschutz-content p {
   line-height: 1.8;
   color: var(--white);
   margin-bottom: 25px;
@@ -125,16 +174,32 @@
   transition: all 0.6s cubic-bezier(0.4, 0.0, 0.2, 1);
 }
 
-.impressum-content p.animate-in {
+.datenschutz-content p.animate-in {
   opacity: 1;
   transform: translateY(0);
 }
 
-.impressum-content p:hover {
+.datenschutz-content p:hover {
   color: var(--accent-color);
   text-shadow: 0 2px 8px rgba(255, 170, 0, 0.3);
   transform: translateX(5px);
 }
+
+.datenschutz-content strong {
+  color: var(--white);
+  font-weight: 600;
+}
+
+.last-updated {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--white);
+  opacity: 0.7;
+}
+
 
 /* Enhanced Back Link - Like Live Test Button */
 .back-link {
@@ -200,39 +265,39 @@
 }
 
 /* Section dividers */
-.impressum-content > *:not(:last-child) {
+.datenschutz-content > *:not(:last-child) {
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   padding-bottom: 20px;
   margin-bottom: 30px;
 }
 
-.impressum-content > h1 {
+.datenschutz-content > h1 {
   border-bottom: none;
   padding-bottom: 30px;
   margin-bottom: 40px;
 }
 
 /* Enhanced contact info styling */
-.impressum-content p br {
+.datenschutz-content p br {
   line-height: 2;
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  .impressum-page {
+  .datenschutz-page {
     padding: 100px 0 40px;
   }
   
-  .impressum-content {
+  .datenschutz-content {
     margin: 0 20px;
     padding: 40px 30px;
   }
   
-  .impressum-content h1 {
+  .datenschutz-content h1 {
     font-size: 2.2rem;
   }
   
-  .impressum-content h2 {
+  .datenschutz-content h2 {
     font-size: 1.2rem;
     margin: 30px 0 15px;
   }
@@ -245,20 +310,20 @@
 }
 
 @media (max-width: 480px) {
-  .impressum-content {
+  .datenschutz-content {
     margin: 0 15px;
     padding: 30px 20px;
   }
   
-  .impressum-content h1 {
+  .datenschutz-content h1 {
     font-size: 1.8rem;
   }
   
-  .impressum-content h2 {
+  .datenschutz-content h2 {
     font-size: 1.1rem;
   }
   
-  .impressum-content p {
+  .datenschutz-content p {
     font-size: 0.9rem;
   }
   
@@ -271,17 +336,21 @@
 
 /* Performance optimization */
 @media (prefers-reduced-motion: reduce) {
-  .impressum-content,
-  .impressum-content h1,
-  .impressum-content h2,
-  .impressum-content p,
+  .datenschutz-content,
+  .datenschutz-content h1,
+  .datenschutz-content h2,
+  .datenschutz-content h3,
+  .datenschutz-content h4,
+  .datenschutz-content p,
   .back-link {
     transition: none;
   }
   
-  .impressum-content h1:hover,
-  .impressum-content h2:hover,
-  .impressum-content p:hover,
+  .datenschutz-content h1:hover,
+  .datenschutz-content h2:hover,
+  .datenschutz-content h3:hover,
+  .datenschutz-content h4:hover,
+  .datenschutz-content p:hover,
   .back-link:hover {
     transform: none;
   }

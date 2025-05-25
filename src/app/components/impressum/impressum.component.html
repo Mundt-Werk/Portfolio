@@ -1,29 +1,40 @@
 <div class="impressum-page">
   <div class="container">
-    <h1>Impressum</h1>
-    <div class="impressum-content">
-      <h2>Angaben gemäß § 5 TMG</h2>
+    <div class="impressum-content" #impressumContent>
+      <h1>{{ languageService.t('impressum.title') }}</h1>
+      
+      <h2>{{ languageService.t('impressum.subtitle') }}</h2>
       <p>
         Marco Mundt<br>
         Frontend Developer<br>
-        Musterstraße 123<br>
-        12345 Musterstadt
+        An der Ziegelei 18<br>
+        52355 Düren
       </p>
       
-      <h2>Kontakt</h2>
+      <h2>{{ languageService.t('impressum.contact') }}</h2>
       <p>
-        E-Mail: marco.mundtgmail.com<br>
-        Telefon: +49 123 456789
+        E-Mail: marcomundt&#64;mundtwerk.com<br>
+        Telefon: +49 177 3434611
       </p>
       
-      <h2>Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV</h2>
+      <h2>{{ languageService.t('impressum.responsibleContent') }}</h2>
       <p>
         Marco Mundt<br>
-        Musterstraße 123<br>
-        12345 Musterstadt
+        An der Ziegelei 18<br>
+        52355 Düren
       </p>
       
-      <a routerLink="/home" class="back-link">← Zurück zum Portfolio</a>
+      <h2>{{ languageService.t('impressum.contentLiability') }}</h2>
+      <p>
+        {{ languageService.t('impressum.contentLiabilityText') }}
+      </p>
+      
+      <h2>{{ languageService.t('impressum.linkLiability') }}</h2>
+      <p>
+        {{ languageService.t('impressum.linkLiabilityText') }}
+      </p>
+      
+      <a routerLink="/home" class="back-link">{{ languageService.t('impressum.backToPortfolio') }}</a>
     </div>
   </div>
 </div>

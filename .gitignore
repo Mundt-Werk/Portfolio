@@ -1,5 +1,71 @@
 # See https://docs.github.com/get-started/getting-started-with-git/ignoring-files for more about ignoring files.
 
+# ======================
+# 🔒 SICHERHEIT & CREDENTIALS
+# ======================
+# Environment files mit sensiblen Daten
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+environment.ts
+environment.prod.ts
+environments/
+src/environments/environment.ts
+src/environments/environment.prod.ts
+
+# EmailJS & API Keys
+email-config.ts
+api-keys.ts
+config/secrets.ts
+src/app/config/email-config.ts
+src/app/services/email-credentials.ts
+
+# Firebase & andere Service Configs
+firebase-config.ts
+google-services.json
+GoogleService-Info.plist
+
+# SSH Keys & Certificates
+*.pem
+*.key
+*.crt
+*.cer
+*.p12
+id_rsa*
+known_hosts
+
+# ======================
+# 📧 EMAIL & KOMMUNIKATION
+# ======================
+# Backup von gesendeten/empfangenen Emails
+emails/
+mail-logs/
+*.eml
+
+# ======================
+# 💾 PERSÖNLICHE DATEN
+# ======================
+# Persönliche Notizen & TODOs
+NOTES.md
+TODO.md
+personal-notes/
+.personal/
+
+# Backup von Portfolios/CVs
+cv/
+lebenslauf/
+portfolio-backup/
+
+# Screenshots von der Entwicklung
+screenshots/
+dev-images/
+test-screenshots/
+
+# ======================
+# 🔧 ANGULAR STANDARD
+# ======================
 # Compiled output
 /dist
 /tmp
@@ -10,7 +76,22 @@
 /node_modules
 npm-debug.log
 yarn-error.log
+package-lock.json  # Falls du yarn verwendest
+yarn.lock         # Falls du npm verwendest
 
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage directory used by tools like istanbul
+coverage/
+*.lcov
+
+# ======================
+# 🛠️ ENTWICKLUNGSTOOLS
+# ======================
 # IDEs and editors
 .idea/
 .project
@@ -19,6 +100,7 @@ yarn-error.log
 *.launch
 .settings/
 *.sublime-workspace
+*.sublime-project
 
 # Visual Studio Code
 .vscode/*
@@ -28,15 +110,157 @@ yarn-error.log
 !.vscode/extensions.json
 .history/*
 
-# Miscellaneous
+# WebStorm
+.webstorm/
+
+# ======================
+# 📊 LOGS & DEBUGGING
+# ======================
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# Angular CLI cache
 /.angular/cache
 .sass-cache/
 /connect.lock
-/coverage
 /libpeerconnection.log
 testem.log
 /typings
 
+# ======================
+# 🖥️ BETRIEBSSYSTEM
+# ======================
 # System files
 .DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
 Thumbs.db
+Desktop.ini
+
+# Linux
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+.nfs*
+
+# ======================
+# 🌐 DEPLOYMENT & BUILD
+# ======================
+# Build artifacts
+build/
+dist/
+out/
+
+# Dependency directories
+jspm_packages/
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# Microbundle cache
+.rpt2_cache/
+.rts2_cache_cjs/
+.rts2_cache_es/
+.rts2_cache_umd/
+
+# ======================
+# 🧪 TESTING
+# ======================
+# Test coverage
+coverage/
+.nyc_output/
+
+# Test results
+test-results/
+junit.xml
+
+# ======================
+# 📱 MOBILE DEVELOPMENT
+# ======================
+# Capacitor
+/android
+/ios
+
+# ======================
+# 🔄 TEMPORÄRE DATEIEN
+# ======================
+# Temporary folders
+tmp/
+temp/
+.tmp/
+
+# Editor backup files
+*~
+*.swp
+*.swo
+
+# ======================
+# 📈 ANALYTICS & TRACKING
+# ======================
+# Google Analytics & andere Tracking IDs
+analytics-config.ts
+tracking-ids.ts
+
+# ======================
+# 🎨 DESIGN ASSETS (Optional)
+# ======================
+# Große Design-Dateien (falls zu groß für Git)
+# *.psd
+# *.ai
+# *.sketch
+# design-files/
+
+# ======================
+# 📦 PACKAGE MANAGER
+# ======================
+# Yarn Integrity file
+.yarn-integrity
+
+# dotenv environment variables file
+.env.test
+
+# parcel-bundler cache (https://parceljs.org/)
+.cache
+.parcel-cache
+
+# ======================
+# 🚀 DEPLOYMENT SECRETS
+# ======================
+# Vercel
+.vercel
+
+# Netlify
+.netlify
+
+# Firebase
+.firebase/
+firebase-debug.log
+firestore-debug.log
+ui-debug.log
+
+# Serverless
+.serverless/
+
+# FuseBox cache
+.fusebox/
+
+# DynamoDB Local files
+.dynamodb/
+
+# TernJS port file
+.tern-port
+
+language.service.ts
+

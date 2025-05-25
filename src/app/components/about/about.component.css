@@ -146,8 +146,8 @@
 }
 
 .about-image:hover img {
-  transform: translateY(-3px);
-  border: 2px solid rgba(255, 255, 255, 0.2);
+  transform: translateX(3px);
+
 }
 
 .profile-container {

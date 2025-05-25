@@ -24,7 +24,7 @@
               [class.error]="isFieldInvalid('name')"
             >
             <div class="error-message" *ngIf="isFieldInvalid('name')">
-              Name is required and must be at least 2 characters long
+              {{ languageService.t('contact.errors.nameRequired') }}
             </div>
           </div>
 
@@ -40,7 +40,7 @@
               [class.error]="isFieldInvalid('email')"
             >
             <div class="error-message" *ngIf="isFieldInvalid('email')">
-              Please enter a valid email address
+              {{ languageService.t('contact.errors.emailInvalid') }}
             </div>
           </div>
 
@@ -56,7 +56,7 @@
               [class.error]="isFieldInvalid('message')"
             ></textarea>
             <div class="error-message" *ngIf="isFieldInvalid('message')">
-              Message is required and must be at least 10 characters long
+              {{ languageService.t('contact.errors.messageRequired') }}
             </div>
           </div>
 
@@ -69,10 +69,14 @@
                 class="checkbox-input"
               >
               <span class="checkbox-custom"></span>
-              <span class="checkbox-text">{{ languageService.t('contact.privacy') }}</span>
+              <span class="checkbox-text">
+                {{ languageService.t('contact.privacyStart') }}
+                <a routerLink="/datenschutz" class="privacy-link">{{ languageService.t('contact.privacyLink') }}</a>
+                {{ languageService.t('contact.privacyEnd') }}
+              </span>
             </label>
             <div class="error-message" *ngIf="isFieldInvalid('privacy')">
-              You must accept the privacy policy
+              {{ languageService.t('contact.errors.privacyRequired') }}
             </div>
           </div>
 
@@ -84,12 +88,12 @@
             [class.sending]="isSubmitting"
           >
             <span *ngIf="!isSubmitting">{{ languageService.t('contact.send') }}</span>
-            <span *ngIf="isSubmitting">Sending...</span>
+            <span *ngIf="isSubmitting">{{ languageService.t('contact.success.sending') }}</span>
           </button>
 
           <!-- Success Message -->
           <div class="success-message" *ngIf="showSuccessMessage">
-            <p>✅ Message sent successfully! I'll get back to you soon.</p>
+            <p>{{ languageService.t('contact.success.message') }}</p>
           </div>
         </form>
       </div>

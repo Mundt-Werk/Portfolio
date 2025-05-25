@@ -30,7 +30,7 @@
 }
 
 .social-link:hover {
-  color: #667eea;
+  color: var(--primary-color);
 }
 
 /* Responsive */
